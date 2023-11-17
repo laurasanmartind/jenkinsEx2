@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Run tests using the unittest module
-                    sh "python${PYTHON_VERSION} -m unittest test_calculator.py"
+                    sh "python -m unittest test_calculator.py"
                 }
             }
         }
