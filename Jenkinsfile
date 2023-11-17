@@ -1,12 +1,7 @@
 pipeline {
     agent any
 
-    environment {
-        PYTHON_VERSION = '3.8'
-        VIRTUAL_ENV = "/var/lib/jenkins/python-env"
-    }
-
-    options {
+       options {
         timeout(time: 1, unit: 'HOURS')
         buildDiscarder(logRotator(numToKeepStr: '10'))
         disableConcurrentBuilds()
