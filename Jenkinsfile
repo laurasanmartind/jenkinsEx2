@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-       options {
+    options {
         timeout(time: 1, unit: 'HOURS')
         buildDiscarder(logRotator(numToKeepStr: '10'))
         disableConcurrentBuilds()
@@ -10,11 +10,7 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                script {
-                    sh "python${PYTHON_VERSION} -m venv ${VIRTUAL_ENV}"
-                    sh "source ${VIRTUAL_ENV}/bin/activate"
-                    sh "python${PYTHON_VERSION} -m pip install -r requirements.txt"
-                }
+                checkout scm
             }
         }
 
@@ -30,7 +26,6 @@ pipeline {
         stage('Deployment') {
             steps {
                 script {
-                    // Add implementation steps here if necessary
                     echo 'Script implementation...'
                 }
             }
